@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+  current:
+    image: snymanc/dind-19.03.8:${GIT_SHA}
+    build:
+      context: .
+
+  latest:
+    image: snymanc/dind-19.03.8:latest
+    build:
+      context: .
+
+  with-docker-compose:
+    image: snymanc/dind-19.03.8:with-docker-compose
+    build:
+      context: .
+
