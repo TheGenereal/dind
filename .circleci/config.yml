@@ -5,7 +5,7 @@ jobs:
       - image: docker:19.03.8
     working_directory: /app
     environment:
-      - COMPOSE_FILE: docker-compose.yml
+      - COMPOSE_FILE: docker-compose.build.yml
     steps:
       - setup_remote_docker
       - run:
@@ -19,11 +19,11 @@ jobs:
             set -x
             pip install docker-compose
       - run:
-          name: Test Docker
+          name: Login to Docker
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS 
+      - run:
+          name: Building and pushing images
           command: |
-            set -x
-            docker -v
-            docker-compose -v
-            docker run hello-world
-            curl ifconfig.co
-
+            set -e
+            docker-compose build --pull
+            docker-compose push
