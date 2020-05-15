@@ -14,15 +14,16 @@ jobs:
             set -x
             apk add --no-cache --no-progress bash py-pip python-dev libffi-dev openssl-dev gcc libc-dev make curl
       - run:
-          name: Install docker-compose
+          name: Installing docker-compose
           command: |
             set -x
             pip install docker-compose
       - run:
-          name: Test image
+          name: Test Docker
           command: |
             set -x
             docker -v
             docker-compose -v
+            docker run hello-world
             curl ifconfig.co
 
