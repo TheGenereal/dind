@@ -25,4 +25,5 @@ jobs:
           name: Building and pushing images
           command: |
             set -e
-            ls -l
+            docker-compose build --pull
+            docker-compose push
