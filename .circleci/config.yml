@@ -7,6 +7,7 @@ jobs:
     environment:
       - COMPOSE_FILE: docker-compose.build.yml
     steps:
+      - checkout
       - setup_remote_docker
       - run:
           name: Installing Dependencies
