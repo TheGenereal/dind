@@ -22,9 +22,9 @@ jobs:
           name: Building image
           command: |
             set -e
-            docker image build --pull -t $DOCKER_ORG/$DOCKER_IMG_NAME:$DOCKER_IMG_VERSION .
+            docker image build --pull -t $DOCKER_IMG_NAME:$DOCKER_IMG_VERSION .
       - run:
           name: Pushing image
           command: |
             set -e 
-            docker image push $DOCKER_ORG/$DOCKER_IMG_NAME:$DOCKER_IMG_VERSION
+            docker image push $DOCKER_IMG_NAME:$DOCKER_IMG_VERSION
