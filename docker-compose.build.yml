@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   with-docker-compose:
-    image: snymanc/dind-19.03.8:with-docker-compose
+    image: DOCKER_USER/DOCKER_IMG_NAME:DOCKER_IMG_VERSION
     build:
       context: .
 

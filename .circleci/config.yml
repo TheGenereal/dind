@@ -10,21 +10,22 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
+          name: Installing Dependencies
+          command: |
+            set -x
+            apk add --no-cache --no-progress py-pip python-dev libffi-dev openssl-dev gcc libc-dev make 
+      - run:
+          name: Installing docker-compose
+          command: |
+            set -x
+            pip install docker-compose
+      - run:
           name: Login to Docker
           command: docker login -u $DOCKER_USER -p $DOCKER_PASS 
       - run:
-          name: Set Docker variables
+          name: Building and Pushing images
           command: |
             set -e
             source docker.env
-            printenv
-      - run:
-          name: Building image
-          command: |
-            set -e
-            docker image build --pull -t snymanc/$DOCKER_IMG_NAME:$DOCKER_IMG_VERSION .
-      - run:
-          name: Pushing image
-          command: |
-            set -e 
-            docker image push snymanc/$DOCKER_IMG_NAME:$DOCKER_IMG_VERSION
+            docker-compose build --pull
+            docker-compose push
