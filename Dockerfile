@@ -16,5 +16,3 @@ RUN set -eux; \
 
 RUN pip install --quiet docker-compose
 
-WORKDIR /app
-COPY . .
