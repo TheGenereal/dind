@@ -17,6 +17,7 @@ jobs:
           command: |
             set -e
             source docker.env
+            printenv
       - run:
           name: Building image
           command: |
