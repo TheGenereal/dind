@@ -13,11 +13,19 @@ jobs:
           name: Login to Docker
           command: docker login -u $DOCKER_USER -p $DOCKER_PASS 
       - run:
-          name: Building and Test image
+          name: Building
           command: |
             set -e
             source docker.env
             docker image build --tag $DOCKER_USER/$DOCKER_IMG_NAME:$DOCKER_IMG_VERSION .
+      - run:
+          name: Test image
+          command: |
+            set -e
+            source docker.env
+          docker run --rm -it $DOCKER_USER/$DOCKER_IMG_NAME:$DOCKER_IMG_VERSION
+      - store_artifacts:
+          path: /tmp/artifacts
       - run:
           name: Push image
           command: |
