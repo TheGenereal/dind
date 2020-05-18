@@ -17,7 +17,7 @@ jobs:
           command: |
             set -e
             source docker.env
-            docker image build --tag $DOCKER_USER/$DOCKER_IMG_NAME:$DOCKER_IMG_VERSION $PWD/Dockerfile
+            docker image build --tag $DOCKER_USER/$DOCKER_IMG_NAME:$DOCKER_IMG_VERSION .
       - run:
           name: Push image
           command: |
