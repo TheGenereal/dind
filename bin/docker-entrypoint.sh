@@ -2,4 +2,6 @@
 
 mkdir /tmp/artifacts
 
-docker-compose -v
+docker run hello-world
+
+docker-compose -v > /tmp/artifacts/dc-version.log
