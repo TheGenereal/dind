@@ -23,7 +23,7 @@ jobs:
           command: |
             set -e
             source docker.env
-          docker run --rm -it $DOCKER_USER/$DOCKER_IMG_NAME:$DOCKER_IMG_VERSION
+            docker run --rm $DOCKER_USER/$DOCKER_IMG_NAME:$DOCKER_IMG_VERSION
       - store_artifacts:
           path: /tmp/artifacts
       - run:
